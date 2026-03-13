@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JA.PREMIER SECURITY AGENCY - About Us</title>
+    <title>JA.PREMIER SECURITY AGENCY - Our Clients</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+            overflow-x: hidden;
         }
 
         .container {
@@ -56,16 +56,16 @@
         }
 
         .logo-img {
-            height: 60px; /* Reduced height for better mobile fit */
+            height: 60px;
             width: 60px;
             border-radius: 20%;
             object-fit: contain;
-            background: var(--primary blue);
+            background: var(--primary-blue); /* Fixed typo */
             padding: 5px;
         }
 
         .logo h1 {
-            font-size: 1.2rem; /* Scaled down for mobile-first */
+            font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 1px;
         }
@@ -115,10 +115,10 @@
             margin-bottom: 0.5rem;
         }
 
-        /* TESTIMONIALS SECTION */
-        .testimonials-section {
+        /* INDUSTRY SECTORS */
+        .industry-sectors {
             padding: 4rem 0;
-            background: var(--white);
+            background: var(--light-gray);
         }
 
         .section-title {
@@ -126,60 +126,6 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: var(--dark-black);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--light-gray);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .rating {
-            color: #ffc107;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid #ddd;
-            padding-top: 1rem;
-        }
-
-        .testimonial-author strong {
-            color: var(--primary-blue);
-        }
-
-        .testimonial-author span {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* INDUSTRY SECTORS */
-        .industry-sectors {
-            padding: 4rem 0;
-            background: var(--light-gray);
         }
 
         .industries-grid {
@@ -194,6 +140,11 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
         }
 
         .industry-card h3 {
@@ -260,41 +211,43 @@
             transition: all 0.3s;
         }
 
-        .footer-section a:hover {
-            color: var(--primary-blue);
-        }
-
         .footer-bottom {
             text-align: center;
             border-top: 1px solid #333;
             padding-top: 1rem;
         }
 
-        /* ADD THIS TO YOUR STYLE TAG */
-@media (max-width: 768px) {
-    .nav-menu.active {
-        display: flex !important; /* This is the missing link! */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--dark-black);
-        flex-direction: column;
-        padding: 1rem 0;
-        text-align: center;
-        z-index: 999;
-    }
+        /* MOBILE NAVIGATION STYLES */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
 
-    .nav-menu.active ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-       
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-black);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                display: flex !important;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
     <header class="navbar">
         <div class="container">
             <div class="logo">
@@ -317,7 +270,6 @@
         </div>
     </header>
 
-    <!-- PAGE HEADER -->
     <section class="page-header">
         <div class="container">
             <h1>Our Clients</h1>
@@ -325,7 +277,6 @@
         </div>
     </section>
 
-    <!-- INDUSTRY SECTORS -->
     <section class="industry-sectors">
         <div class="container">
             <h2 class="section-title">Industries We Serve</h2>
@@ -336,7 +287,7 @@
                 </div>
                 <div class="industry-card">
                     <h3>Residential</h3>
-                    <p>Securing residential communities, condominiums, and residential complexes with professional monitoring.</p>
+                    <p>Securing residential communities, condominiums, and complexes with professional monitoring.</p>
                 </div>
                 <div class="industry-card">
                     <h3>Healthcare</h3>
@@ -348,7 +299,7 @@
                 </div>
                 <div class="industry-card">
                     <h3>Hospitality</h3>
-                    <p>Protecting hotels, resorts, and hospitality establishments with comprehensive security solutions.</p>
+                    <p>Protecting hotels, resorts, and hospitality establishments with comprehensive solutions.</p>
                 </div>
                 <div class="industry-card">
                     <h3>Education</h3>
@@ -358,7 +309,6 @@
         </div>
     </section>
 
-    <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="container">
             <h2>Become Part of Our Client Family</h2>
@@ -367,29 +317,8 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>JA.PREMIER SECURITY AGENCY</h4>
-                    <p>San Vicente, Bulusan, Sorsogon</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>📞 +63 (981) 245 0475</p>
-                    <p>📧 ja.premier.sa@gmail.com</p>
-                </div>
-            </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 JA.PREMIER SECURITY AGENCY. All rights reserved.</p>
             </div>
@@ -397,85 +326,28 @@
     </footer>
 
     <script>
-    /**
-     * MAIN SITE JAVASCRIPT
-     * Handles: Mobile Navigation, Contact Form, and Smooth Scrolling
-     */
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
 
-    // 1. SELECT ELEMENTS
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    const contactForm = document.getElementById('contactForm');
-
-    // 2. MOBILE NAVIGATION LOGIC
-    if (menuToggle && navMenu) {
-        // Toggle menu when clicking the burger icon
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents the "click outside" logic from firing immediately
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when any link inside is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('active');
             });
-        });
 
-        // Close menu if user clicks anywhere outside the nav area
-        document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-    }
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
 
-    // 3. RESPONSIVE RESET 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navMenu) {
-            navMenu.classList.remove('active');
-            navMenu.style.display = ''; 
-        }
-    });
-
-    // 4. CONTACT FORM SUBMISSION
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = this.querySelector('#name')?.value;
-            const email = this.querySelector('#email')?.value;
-            const subject = this.querySelector('#subject')?.value;
-            const message = this.querySelector('#message')?.value;
-            
-            if (name && email && subject && message) {
-                alert('Thank you for your message! We will contact you shortly.');
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
-    }
-
-    // 5. SMOOTH SCROLLING
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
                 }
-            }
-        });
-    });
-</script>
+            });
+        }
+    </script>
 </body>
 </html>
-
-
