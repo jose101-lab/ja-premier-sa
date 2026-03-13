@@ -389,38 +389,22 @@
 
     <button id="backToTop" class="back-to-top">↑</button>
 
-    <script>
-        // MOBILE MENU LOGIC
+   <script>
         const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.querySelector('.nav-menu');
+        const navMenu = document.getElementById('navMenu');
 
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
         // Close menu when a link is clicked
-        document.querySelectorAll('.nav-menu a').forEach(link => {
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                menuToggle.textContent = '☰';
             });
-        });
-
-        // BACK TO TOP LOGIC
-        const backToTopBtn = document.getElementById("backToTop");
-
-        window.onscroll = function() {
-            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
-        };
-
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
         });
     </script>
 </body>
 </html>
+
