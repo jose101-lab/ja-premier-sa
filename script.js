@@ -1,24 +1,46 @@
-// Mobile Menu Toggle
+/**
+ * MAIN SITE JAVASCRIPT
+ * Handles: Mobile Navigation, Contact Form, and Smooth Scrolling
+ */
+
+// 1. SELECT ELEMENTS
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-menu a');
+const contactForm = document.getElementById('contactForm');
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+// 2. MOBILE MENU TOGGLE
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked (Fix for mobile UX)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Close menu if user clicks anywhere outside the nav area
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            navMenu.classList.remove('active');
+        }
     });
 }
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (navMenu) {
-            navMenu.style.display = 'none';
-        }
-    });
+// 3. RESPONSIVE RESET 
+// Ensures the menu doesn't stay hidden if you resize the window from mobile to desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu) {
+        navMenu.classList.remove('active');
+        navMenu.style.display = ''; // Resets inline styles to let CSS take over
+    }
 });
 
-// Contact Form Submission
-const contactForm = document.getElementById('contactForm');
+// 4. CONTACT FORM SUBMISSION
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -37,7 +59,7 @@ if (contactForm) {
     });
 }
 
-// Smooth Scrolling
+// 5. SMOOTH SCROLLING FOR ANCHOR LINKS
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -52,11 +74,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             }
         }
     });
-});
-
-// Responsive Navigation
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && navMenu) {
-        navMenu.style.display = 'flex';
-    }
 });
