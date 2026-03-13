@@ -4,24 +4,25 @@
  */
 
 // 1. SELECT ELEMENTS
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-menu a');
-const contactForm = document.getElementById('contactForm');
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    // Change getElementById to querySelector to find the class '.nav-menu'
+    const navMenu = document.querySelector('.nav-menu'); 
 
-// 2. MOBILE MENU TOGGLE
-if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navMenu.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked (Fix for mobile UX)
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-    });
+
+        // Close menu when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+</script>
 
     // Close menu if user clicks anywhere outside the nav area
     document.addEventListener('click', (e) => {
