@@ -389,68 +389,38 @@
 
     <button id="backToTop" class="back-to-top">↑</button>
 
-  <script>
-    // --- MOBILE MENU LOGIC ---
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const body = document.body;
+    <script>
+        // MOBILE MENU LOGIC
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
 
-    // Unified function to handle menu state
-    const toggleMenu = () => {
-        const isOpen = navMenu.classList.toggle('active');
-        menuToggle.textContent = isOpen ? '✕' : '☰';
-        
-        // Prevent background scrolling on mobile when menu is open
-        body.style.overflow = isOpen ? 'hidden' : 'auto';
-    };
-
-    menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Stops click from triggering "close on outside click"
-        toggleMenu();
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navMenu.classList.contains('active')) {
-                toggleMenu();
-            }
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
-    });
 
-    // Close menu when clicking anywhere outside the menu
-    document.addEventListener('click', (e) => {
-        if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && e.target !== menuToggle) {
-            toggleMenu();
-        }
-    });
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.textContent = '☰';
+            });
+        });
 
+        // BACK TO TOP LOGIC
+        const backToTopBtn = document.getElementById("backToTop");
 
-    // --- BACK TO TOP LOGIC ---
-    // Note: Make sure you have the <button id="backToTop"> in your HTML
-    const backToTopBtn = document.getElementById("backToTop");
-
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            const scrollValue = document.documentElement.scrollTop || document.body.scrollTop;
-            
-            if (scrollValue > 400) {
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
                 backToTopBtn.style.display = "block";
             } else {
                 backToTopBtn.style.display = "none";
             }
-        }, { passive: true });
+        };
 
         backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
-    }
-</script>
+    </script>
 </body>
 </html>
-
-
-
