@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JA.PREMIER SECURITY AGENCY - About Us</title>
+    <title>JA.PREMIER SECURITY AGENCY - Contact Us</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+            overflow-x: hidden;
         }
 
         .container {
@@ -56,16 +56,16 @@
         }
 
         .logo-img {
-            height: 60px; /* Reduced height for better mobile fit */
+            height: 60px;
             width: 60px;
             border-radius: 20%;
             object-fit: contain;
-            background: var(--primary blue);
+            background: var(--primary-blue); /* Fixed variable name */
             padding: 5px;
         }
 
         .logo h1 {
-            font-size: 1.2rem; /* Scaled down for mobile-first */
+            font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 1px;
         }
@@ -114,6 +114,7 @@
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
+
         /* CONTACT SECTION */
         .contact-section {
             padding: 4rem 0;
@@ -154,75 +155,16 @@
             margin-bottom: 0.5rem;
         }
 
-        .info-details p {
-            color: #666;
-            line-height: 1.6;
+        .form-container {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* CONTACT FORM */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact-form h2 {
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            color: var(--dark-black);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 0.95rem;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 5px rgba(0, 102, 204, 0.3);
-        }
-
-        .cta-button {
-            background: var(--primary-blue);
-            color: var(--white);
+        .form-container iframe {
+            width: 100%;
             border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            align-self: flex-start;
-        }
-
-        .cta-button:hover {
-            background: #004d99;
-            transform: translateY(-2px);
-        }
-
-        .form-note {
-            color: #999;
-            font-size: 0.9rem;
-            margin-top: 1rem;
         }
 
         /* FAQ SECTION */
@@ -256,11 +198,6 @@
             margin-bottom: 1rem;
         }
 
-        .faq-item p {
-            color: #666;
-            line-height: 1.8;
-        }
-
         /* FOOTER */
         .footer {
             background: var(--dark-black);
@@ -290,23 +227,38 @@
             transition: all 0.3s;
         }
 
-        .footer-section a:hover {
-            color: var(--primary-blue);
-        }
-
         .footer-bottom {
             text-align: center;
             border-top: 1px solid #333;
             padding-top: 1rem;
         }
 
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
             .menu-toggle {
                 display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-black);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                display: flex !important;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 1rem;
             }
 
             .contact-content {
@@ -316,7 +268,7 @@
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
+
     <header class="navbar">
         <div class="container">
             <div class="logo">
@@ -339,7 +291,6 @@
         </div>
     </header>
 
-    <!-- PAGE HEADER -->
     <section class="page-header">
         <div class="container">
             <h1>Contact Us</h1>
@@ -347,7 +298,6 @@
         </div>
     </section>
 
-    <!-- CONTACT CONTENT -->
     <section class="contact-section">
         <div class="container">
             <div class="contact-content">
@@ -358,8 +308,8 @@
                         <div class="info-icon">📍</div>
                         <div class="info-details">
                             <h4>Address</h4>
-                            <p>San Vicente, Bulusan, Sorsogon<br></p>
-                            <p>Poblacion, Dagohoy, Bohol<br>Philippines</p>
+                            <p>San Vicente, Bulusan, Sorsogon</p>
+                            <p>Poblacion, Dagohoy, Bohol</p>
                         </div>
                     </div>
 
@@ -367,7 +317,7 @@
                         <div class="info-icon">📞</div>
                         <div class="info-details">
                             <h4>Phone</h4>
-                            <p>+63 (981) 245 0475<br>
+                            <p>+63 (981) 245 0475</p>
                         </div>
                     </div>
 
@@ -375,7 +325,7 @@
                         <div class="info-icon">📧</div>
                         <div class="info-details">
                             <h4>Email</h4>
-                            <p>ja.premier.sa@gmail.com<br>
+                            <p>ja.premier.sa@gmail.com</p>
                         </div>
                     </div>
 
@@ -388,150 +338,64 @@
                     </div>
                 </div>
 
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdKZLO78PeJYR8e_AkhZjij9XGuc3HIwGBPF55ecNeBlUdcqg/viewform?embedded=true" width="640" height="1011" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>How quickly can you respond to emergencies?</h4>
-                    <p>We maintain a 24/7 emergency response team with an average response time of less than 15 minutes in our service area.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What areas do you serve?</h4>
-                    <p>We primarily serve Bicol and Central Visayas Region, with main operations in Sorsogon and surrounding provinces. Bohol in Central Visayas.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Do you offer customized security packages?</h4>
-                    <p>Yes! We provide tailored security solutions based on your specific needs, budget, and requirements.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Are your security personnel trained and certified?</h4>
-                    <p>All our security personnel are professionally trained and certified according to industry standards.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What is your contract terms?</h4>
-                    <p>We offer flexible contract terms ranging from short-term to long-term agreements tailored to your needs.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>How do I schedule a security assessment?</h4>
-                    <p>Simply fill out the contact form or call us directly. Our team will schedule a convenient time for a free assessment.</p>
+                <div class="form-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdKZLO78PeJYR8e_AkhZjij9XGuc3HIwGBPF55ecNeBlUdcqg/viewform?embedded=true" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
+    <section class="faq-section">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>JA.PREMIER SECURITY AGENCY</h4>
-                    <p>San Vicente, Bulusan, Sorsogon</p>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How quickly can you respond?</h4>
+                    <p>We maintain a 24/7 emergency response team with an average response time of less than 15 minutes in our service areas.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
+                <div class="faq-item">
+                    <h4>What areas do you serve?</h4>
+                    <p>We primarily serve Bicol and Central Visayas, with main operations in Sorsogon and Bohol.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>📞 +63 (919) 097 1387</p>
-                    <p>📧 ja.premier.sa@gmail.com</p>
+                <div class="faq-item">
+                    <h4>Are personnel certified?</h4>
+                    <p>All our security personnel are professionally trained and certified according to industry standards.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
             <div class="footer-bottom">
                 <p>&copy; 2026 JA.PREMIER SECURITY AGENCY. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-   <script>
-    /**
-     * MAIN SITE JAVASCRIPT
-     * Handles: Mobile Navigation, Contact Form, and Smooth Scrolling
-     */
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
 
-    // 1. SELECT ELEMENTS
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    const contactForm = document.getElementById('contactForm');
-
-    // 2. MOBILE NAVIGATION LOGIC
-    if (menuToggle && navMenu) {
-        // Toggle menu when clicking the burger icon
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents the "click outside" logic from firing immediately
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when any link inside is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('active');
             });
-        });
 
-        // Close menu if user clicks anywhere outside the nav area
-        document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-    }
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
 
-    // 3. RESPONSIVE RESET 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navMenu) {
-            navMenu.classList.remove('active');
-            navMenu.style.display = ''; 
-        }
-    });
-
-    // 4. CONTACT FORM SUBMISSION
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = this.querySelector('#name')?.value;
-            const email = this.querySelector('#email')?.value;
-            const subject = this.querySelector('#subject')?.value;
-            const message = this.querySelector('#message')?.value;
-            
-            if (name && email && subject && message) {
-                alert('Thank you for your message! We will contact you shortly.');
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
-    }
-
-    // 5. SMOOTH SCROLLING
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
                 }
-            }
-        });
-    });
-</script>
+            });
+        }
+    </script>
 </body>
 </html>
-
