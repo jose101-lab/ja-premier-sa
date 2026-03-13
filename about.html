@@ -23,7 +23,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+            overflow-x: hidden;
         }
 
         .container {
@@ -56,16 +56,16 @@
         }
 
         .logo-img {
-            height: 60px; /* Reduced height for better mobile fit */
+            height: 60px;
             width: 60px;
             border-radius: 20%;
             object-fit: contain;
-            background: var(--primary blue);
+            background: var(--primary-blue);
             padding: 5px;
         }
 
         .logo h1 {
-            font-size: 1.2rem; /* Scaled down for mobile-first */
+            font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 1px;
         }
@@ -106,90 +106,119 @@
         .page-header {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-black) 100%);
             color: var(--white);
-            padding: 2.5rem 0;
+            padding: 3rem 0;
             text-align: center;
         }
 
         .page-header h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
 
         /* ABOUT SECTION */
         .about-section {
-            padding: 3rem 0;
+            padding: 4rem 0;
             background: var(--white);
         }
 
         .about-text h2 {
             color: var(--primary-blue);
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text h3 {
+            color: var(--dark-black);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 15px;
         }
 
         .about-text p {
-            color: #666;
+            color: #555;
             margin-bottom: 1.5rem;
             line-height: 1.8;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         /* VALUES SECTION */
         .values-section {
-            padding: 3rem 0;
+            padding: 4rem 0;
             background: var(--light-gray);
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
+            font-size: 2rem;
+            margin-bottom: 3rem;
             color: var(--dark-black);
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
         .value-card {
             background: var(--white);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         /* FOOTER */
         .footer {
             background: var(--dark-black);
             color: var(--white);
-            padding: 2rem 0 1rem;
+            padding: 3rem 0 1rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
         .footer-bottom {
             text-align: center;
             border-top: 1px solid #333;
-            padding-top: 1rem;
-            font-size: 0.8rem;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
         }
 
         /* MOBILE RESPONSIVE TWEAKS */
         @media (max-width: 768px) {
             .menu-toggle {
-                display: block; /* Show burger menu on mobile */
+                display: block;
             }
 
             .nav-menu {
-                display: none; /* Hide standard menu */
+                display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -198,24 +227,20 @@
                 flex-direction: column;
                 padding: 1rem 0;
                 text-align: center;
+                z-index: 1000;
             }
 
             .nav-menu.active {
-                display: flex; /* Toggle this via JS */
+                display: flex !important;
             }
 
             .nav-menu ul {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.2rem;
             }
 
-            .logo h1 {
-                font-size: 1rem;
-            }
-            
-            .logo-img {
-                height: 50px;
-                width: 50px;
+            .page-header h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -226,11 +251,11 @@
             <div class="logo">
                 <img src="logo.png" alt="JA Premier Logo" class="logo-img">
                 <div>
-                   <h1>JA.PREMIER SECURITY AGENCY</h1>
-                    <p class="tagline"> "Your Safety, Our Sacred Duty"</p>
+                    <h1>JA.PREMIER SECURITY AGENCY</h1>
+                    <p class="tagline">"Your Safety, Our Sacred Duty"</p>
                 </div>
             </div>
-            <nav class="nav-menu" id="navMenu">
+            <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -246,7 +271,7 @@
     <section class="page-header">
         <div class="container">
             <h1>About Us</h1>
-            <p>Learn about JA.PREMIER SECURITY AGENCY</p>
+            <p>Reliability, Integrity, and Professional Excellence</p>
         </div>
     </section>
 
@@ -257,7 +282,7 @@
                 <p>JA.PREMIER SECURITY AGENCY is a trusted security service provider dedicated to protecting businesses and individuals throughout the Bicol and Central Visayas Region. With years of experience in the security industry, we have established ourselves as a reliable partner for comprehensive security solutions.</p>
                 
                 <h3>Our Mission</h3>
-                <p>To safeguard individuals, businesses and communities by providing exceptional security services tailored to their specific needs through highly trained personnel.</p>
+                <p>To safeguard individuals, businesses, and communities by providing exceptional security services tailored to their specific needs through highly trained personnel and cutting-edge technology.</p>
                 
                 <h3>Our Vision</h3>
                 <p>By the grace of the Almighty, by 2040, JA.PREMIER SECURITY AGENCY shall be the leading provider of security solutions in the country, setting the standard for excellence, integrity, and professionalism in the security industry.</p>
@@ -270,24 +295,24 @@
             <h2 class="section-title">Our Core Values</h2>
             <div class="values-grid">
                 <div class="value-card">
-                    <div class="value-icon">🛡️</div>
+                    <span class="value-icon">🛡️</span>
                     <h3>Vigilance</h3>
-                    <p>Our clients can count on us 24/7 for dependable security services.</p>
+                    <p>Our clients can count on us 24/7 for alert and dependable security services.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🤝</div>
+                    <span class="value-icon">🤝</span>
                     <h3>Integrity</h3>
-                    <p>Honesty and transparency guide all our business practices.</p>
+                    <p>Honesty and transparency guide every decision and action we take.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🎯</div>
+                    <span class="value-icon">🎯</span>
                     <h3>Professionalism</h3>
-                    <p>We maintain the highest standards of professionalism.</p>
+                    <p>We maintain the highest standards of conduct and expertise in the field.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">💡</div>
+                    <span class="value-icon">💡</span>
                     <h3>Innovation</h3>
-                    <p>We continuously adopt new technologies to enhance our services.</p>
+                    <p>We continuously adapt and adopt new tech to stay ahead of threats.</p>
                 </div>
             </div>
         </div>
@@ -299,6 +324,7 @@
                 <div class="footer-section">
                     <h4>JA.PREMIER SECURITY</h4>
                     <p>San Vicente, Bulusan, Sorsogon</p>
+                    <p>Poblacion, Dagohoy, Bohol</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
@@ -322,85 +348,28 @@
     </footer>
 
     <script>
-    /**
-     * MAIN SITE JAVASCRIPT
-     * Handles: Mobile Navigation, Contact Form, and Smooth Scrolling
-     */
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
 
-    // 1. SELECT ELEMENTS
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    const contactForm = document.getElementById('contactForm');
-
-    // 2. MOBILE NAVIGATION LOGIC
-    if (menuToggle && navMenu) {
-        // Toggle menu when clicking the burger icon
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents the "click outside" logic from firing immediately
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when any link inside is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('active');
             });
-        });
 
-        // Close menu if user clicks anywhere outside the nav area
-        document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-    }
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
 
-    // 3. RESPONSIVE RESET 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navMenu) {
-            navMenu.classList.remove('active');
-            navMenu.style.display = ''; 
-        }
-    });
-
-    // 4. CONTACT FORM SUBMISSION
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = this.querySelector('#name')?.value;
-            const email = this.querySelector('#email')?.value;
-            const subject = this.querySelector('#subject')?.value;
-            const message = this.querySelector('#message')?.value;
-            
-            if (name && email && subject && message) {
-                alert('Thank you for your message! We will contact you shortly.');
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
-    }
-
-    // 5. SMOOTH SCROLLING
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
                 }
-            }
-        });
-    });
-</script>
+            });
+        }
+    </script>
 </body>
 </html>
-
-
