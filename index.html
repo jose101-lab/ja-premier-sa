@@ -389,23 +389,68 @@
 
     <button id="backToTop" class="back-to-top">↑</button>
 
-   <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+  <script>
+    // --- MOBILE MENU LOGIC ---
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const body = document.body;
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+    // Unified function to handle menu state
+    const toggleMenu = () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.textContent = isOpen ? '✕' : '☰';
+        
+        // Prevent background scrolling on mobile when menu is open
+        body.style.overflow = isOpen ? 'hidden' : 'auto';
+    };
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Stops click from triggering "close on outside click"
+        toggleMenu();
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
         });
+    });
 
-        // Close menu when a link is clicked
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+    // Close menu when clicking anywhere outside the menu
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && e.target !== menuToggle) {
+            toggleMenu();
+        }
+    });
+
+
+    // --- BACK TO TOP LOGIC ---
+    // Note: Make sure you have the <button id="backToTop"> in your HTML
+    const backToTopBtn = document.getElementById("backToTop");
+
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            const scrollValue = document.documentElement.scrollTop || document.body.scrollTop;
+            
+            if (scrollValue > 400) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
             });
         });
-    </script>
+    }
+</script>
 </body>
 </html>
+
 
 
