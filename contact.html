@@ -453,24 +453,85 @@
         </div>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.querySelector('.nav-menu');
+   <script>
+    /**
+     * MAIN SITE JAVASCRIPT
+     * Handles: Mobile Navigation, Contact Form, and Smooth Scrolling
+     */
 
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    // 1. SELECT ELEMENTS
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const contactForm = document.getElementById('contactForm');
+
+    // 2. MOBILE NAVIGATION LOGIC
+    if (menuToggle && navMenu) {
+        // Toggle menu when clicking the burger icon
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevents the "click outside" logic from firing immediately
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when any link inside is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
             });
-        }
+        });
 
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+        // Close menu if user clicks anywhere outside the nav area
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+
+    // 3. RESPONSIVE RESET 
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu) {
+            navMenu.classList.remove('active');
+            navMenu.style.display = ''; 
+        }
+    });
+
+    // 4. CONTACT FORM SUBMISSION
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('#name')?.value;
+            const email = this.querySelector('#email')?.value;
+            const subject = this.querySelector('#subject')?.value;
+            const message = this.querySelector('#message')?.value;
+            
+            if (name && email && subject && message) {
                 alert('Thank you for your message! We will contact you shortly.');
                 this.reset();
-            });
-        }
-    </script>
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+    }
+
+    // 5. SMOOTH SCROLLING
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
+
