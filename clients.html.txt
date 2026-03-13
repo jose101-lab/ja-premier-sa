@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JA.PREMIER SECURITY AGENCY - About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0066cc;
+            --dark-black: #1a1a1a;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-black) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 60px; /* Reduced height for better mobile fit */
+            width: 60px;
+            border-radius: 20%;
+            object-fit: contain;
+            background: var(--primary blue);
+            padding: 5px;
+        }
+
+        .logo h1 {
+            font-size: 1.2rem; /* Scaled down for mobile-first */
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo .tagline {
+            font-size: 0.65rem;
+            color: var(--white);
+            margin-top: -2px;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-black) 100%);
+            color: var(--white);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* TESTIMONIALS SECTION */
+        .testimonials-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-black);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+        }
+
+        .testimonial-author strong {
+            color: var(--primary-blue);
+        }
+
+        .testimonial-author span {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* INDUSTRY SECTORS */
+        .industry-sectors {
+            padding: 4rem 0;
+            background: var(--light-gray);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .industry-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .industry-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .industry-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-black));
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background: #004d99;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark-black);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="JA Premier Logo" class="logo-img">
+                <div>
+                    <h1>JA.PREMIER SECURITY AGENCY</h1>
+                    <p class="tagline"> "Your Safety, Our Sacred Duty"</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="clients.html">Our Clients</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Clients</h1>
+            <p>Trusted by Businesses and Organizations Across the Region</p>
+        </div>
+    </section>
+
+    <!-- INDUSTRY SECTORS -->
+    <section class="industry-sectors">
+        <div class="container">
+            <h2 class="section-title">Industries We Serve</h2>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <h3>Retail & Commerce</h3>
+                    <p>Protecting retail stores, shopping centers, and commercial establishments from theft and security threats.</p>
+                </div>
+                <div class="industry-card">
+                    <h3>Residential</h3>
+                    <p>Securing residential communities, condominiums, and residential complexes with professional monitoring.</p>
+                </div>
+                <div class="industry-card">
+                    <h3>Healthcare</h3>
+                    <p>Providing security solutions for medical clinics, hospitals, and healthcare facilities.</p>
+                </div>
+                <div class="industry-card">
+                    <h3>Technology & Office</h3>
+                    <p>Securing office buildings, corporate facilities, and tech companies with advanced systems.</p>
+                </div>
+                <div class="industry-card">
+                    <h3>Hospitality</h3>
+                    <p>Protecting hotels, resorts, and hospitality establishments with comprehensive security solutions.</p>
+                </div>
+                <div class="industry-card">
+                    <h3>Education</h3>
+                    <p>Ensuring safety in schools, universities, and educational institutions with professional security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Become Part of Our Client Family</h2>
+            <p>Join hundreds of satisfied clients who trust JA.PREMIER for their security needs</p>
+            <button class="cta-button" onclick="window.location.href='contact.html';">Schedule Consultation</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JA.PREMIER SECURITY AGENCY</h4>
+                    <p>San Vicente, Bulusan, Sorsogon</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📞 +63 (981) 245 0475</p>
+                    <p>📧 ja.premier.sa@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JA.PREMIER SECURITY AGENCY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JA.PREMIER SECURITY AGENCY - About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0066cc;
+            --dark-black: #1a1a1a;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-black) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 60px; /* Reduced height for better mobile fit */
+            width: 60px;
+            border-radius: 20%;
+            object-fit: contain;
+            background: var(--primary blue);
+            padding: 5px;
+        }
+
+        .logo h1 {
+            font-size: 1.2rem; /* Scaled down for mobile-first */
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo .tagline {
+            font-size: 0.65rem;
+            color: var(--white);
+            margin-top: -2px;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-black) 100%);
+            color: var(--white);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        /* SERVICES DETAIL */
+        .services-detail {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-black);
+        }
+
+        .service-detail-card {
+            background: var(--light-gray);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-detail-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-detail-card h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-detail-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-detail-card h4 {
+            color: var(--dark-black);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            columns: 2;
+            column-gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            font-weight: 500;
+            break-inside: avoid;
+        }
+
+        .service-features li:before {
+            content: "✓ ";
+            color: var(--primary-blue);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-black));
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background: #004d99;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark-black);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .service-features {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="JA Premier Logo" class="logo-img">
+                <div>
+                    <h1>JA.PREMIER SECURITY AGENCY</h1>
+                    <p class="tagline"> "Your Safety, Our Sacred Duty"</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="clients.html">Our Clients</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive Security Solutions Tailored to Your Needs</p>
+        </div>
+    </section>
+
+    <!-- SERVICES DETAIL -->
+    <section class="services-detail">
+        <div class="container">
+            <!-- PHYSICAL SECURITY -->
+            <div class="service-detail-card">
+                <div class="service-detail-icon">🔐</div>
+                <h2>Physical Security</h2>
+                <p>Our Physical Security service provides professional protection for your premises through trained security personnel and advanced access control systems. We ensure that your business or residence is protected 24/7 with highly trained and certified security professionals.</p>
+                
+                <h4>What's Included:</h4>
+                <ul class="service-features">
+                    <li>Professional Security Personnel</li>
+                    <li>Access Control Systems</li>
+                    <li>Perimeter Protection</li>
+                    <li>Incident Response</li>
+                    <li>Security Reports and Documentation</li>
+                    <li>Customized Security Plans</li>
+                </ul>
+
+                <h4>Benefits:</h4>
+                <ul class="service-features">
+                    <li>Reduced theft and unauthorized access</li>
+                    <li>Peace of mind for business owners</li>
+                    <li>Professional appearance and deterrent</li>
+                    <li>Rapid response to security threats</li>
+                    <li>Comprehensive security coverage</li>
+                </ul>
+            </div>
+
+            <!-- CCTV MONITORING -->
+            <div class="service-detail-card">
+                <div class="service-detail-icon">📹</div>
+                <h2>CCTV Monitoring</h2>
+                <p>Our 24/7 CCTV Monitoring service provides round-the-clock surveillance of your premises with real-time threat detection and alert systems. Our monitoring center is staffed with trained operators who respond immediately to any suspicious activity.</p>
+                
+                <h4>What's Included:</h4>
+                <ul class="service-features">
+                    <li>24/7 Live Monitoring</li>
+                    <li>HD CCTV Camera Installation</li>
+                    <li>Real-Time Alert Systems</li>
+                    <li>Video Recording and Storage</li>
+                    <li>Remote Access Viewing</li>
+                    <li>Regular Maintenance and Support</li>
+                </ul>
+
+                <h4>Benefits:</h4>
+                <ul class="service-features">
+                    <li>Constant surveillance and monitoring</li>
+                    <li>Immediate response to security incidents</li>
+                    <li>Video evidence for investigations</li>
+                    <li>Reduced insurance premiums</li>
+                    <li>Employee accountability and safety</li>
+                </ul>
+            </div>
+
+            <!-- SECURITY ASSESSMENT -->
+            <div class="service-detail-card">
+                <div class="service-detail-icon">📋</div>
+                <h2>Security Survey Assessment</h2>
+                <p>Our Security Survey Assessment service provides comprehensive evaluation of your current security infrastructure and vulnerabilities. Our expert security professionals conduct thorough audits to identify potential risks and recommend customized solutions.</p>
+                
+                <h4>What's Included:</h4>
+                <ul class="service-features">
+                    <li>Comprehensive Site Audit</li>
+                    <li>Vulnerability Assessment</li>
+                    <li>Risk Analysis and Evaluation</li>
+                    <li>Threat Identification</li>
+                    <li>Detailed Security Report</li>
+                    <li>Customized Recommendations</li>
+                    <li>Implementation Support</li>
+                </ul>
+
+                <h4>Benefits:</h4>
+                <ul class="service-features">
+                    <li>Identifies security gaps and weaknesses</li>
+                    <li>Prioritized recommendations for improvements</li>
+                    <li>Cost-effective security solutions</li>
+                    <li>Compliance with security standards</li>
+                    <li>Peace of mind with professional assessment</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Security Services?</h2>
+            <p>Contact us today for a free consultation and customized security solution</p>
+            <button class="cta-button" onclick="window.location.href='contact.html';">Get Free Consultation</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JA.PREMIER SECURITY AGENCY</h4>
+                    <p>San Vicente, Bulusan, Sorsogon</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📞 +63 (981) 245 0475</p>
+                    <p>📧 ja.premier.sa@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JA.PREMIER SECURITY AGENCY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
